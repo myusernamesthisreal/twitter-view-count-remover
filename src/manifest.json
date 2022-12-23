@@ -2,12 +2,10 @@
   "manifest_version": 3,
   "name": "Twitter View Count Remover",
   "description": "A chrome extension to remove the Views count from Twitter",
+  "version": "0.1.0",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34.png"
-  },
-  "chrome_url_overrides": {
-    "newtab": "newtab.html"
   },
   "icons": {
     "128": "icon-128.png"
