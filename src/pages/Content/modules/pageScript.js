@@ -1,15 +1,15 @@
 export const removeViews = () => {
-    console.log("Removing views buttons...");
-    let count = 0;
-    let viewDivs = [];
+    // Timeline views that are not from twitter circles
     document.querySelectorAll('a').forEach((link) => {
-        if (link.href.includes("/analytics") && link.ariaLabel.includes("View Tweet analytics")) {
-            count++;
-            viewDivs.push(link);
+        if (link.ariaLabel?.includes("View Tweet analytics")) {
             link.parentElement.remove();
         }
-
     });
 
-    console.log("There are this many views buttons:", count);
+    // Timeline views (Twitter circle posts)
+    document.querySelectorAll('div').forEach((div) => {
+        if (div.ariaLabel?.includes("View Tweet analytics") && div.role === "button") {
+            div.parentElement.remove();
+        }
+    });
 }
