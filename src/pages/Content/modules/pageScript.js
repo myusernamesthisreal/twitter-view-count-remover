@@ -6,6 +6,13 @@ export const removeViews = () => {
         }
     });
 
+    // Post views when opening a post
+    document.querySelectorAll('span').forEach((span) => {
+        if (span.textContent?.includes("Views")) {
+            span.parentElement.parentElement.parentElement.remove();
+        }
+    });
+
     // Timeline views (Twitter circle posts)
     document.querySelectorAll('div').forEach((div) => {
         if (div.ariaLabel?.includes("View Tweet analytics") && div.role === "button") {
