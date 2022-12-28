@@ -8,9 +8,16 @@ printLine("Using the 'printLine' function from the Print Module");
 
 removeViews();
 
-document.addEventListener('DOMNodeInserted', () => {
-    removeViews();
-});
+(async () => {
+    const { globalEnable } = await chrome.storage.sync.get(['globalEnable']);
+    document.addEventListener('DOMNodeInserted', () => {
+        globalEnable && removeViews();
+    });
+})();
+
+
+
+
 
 
 // const s = document.createElement('script');
