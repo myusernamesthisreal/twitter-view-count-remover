@@ -8,8 +8,8 @@ export const removeViews = () => {
 
     // Post views when opening a post
     document.querySelectorAll('span').forEach((span) => {
-        if (span.textContent?.includes("View")) {
-            span.parentElement.parentElement.parentElement.remove();
+        if (span.textContent?.includes("View") && span.parentElement.tagName === "SPAN") {
+            span.parentElement.parentElement.parentElement.parentElement.remove();
         }
     });
 
