@@ -1,11 +1,18 @@
-export const removeViews = (whitelistedAccounts) => {
+export const removeViews = (whitelistedAccounts, moveViews) => {
 
     // Timeline views that are not from twitter circles
     document.querySelectorAll('a').forEach((link) => {
-        if (link.ariaLabel?.includes("View Tweet analytics")) {
+        if (link.ariaLabel?.includes("View Tweet analytics") && link.parentElement.id !== "TWTVCRWL") {
             const wlFilter = whitelistedAccounts.map(account => account.toLowerCase()).includes(link.href.split("/")[3].toLowerCase());
-            if (!wlFilter)
+            if (moveViews) {
+                const views = link.parentElement.cloneNode(true);
+                views.id = "TWTVCRWL";
+                link.parentElement.parentElement.appendChild(views);
                 link.parentElement.remove();
+            }
+            else if (!wlFilter) {
+                link.parentElement.remove();
+            }
         }
     });
 
