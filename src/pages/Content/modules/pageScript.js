@@ -1,7 +1,4 @@
-export const removeViews = () => {
-
-    // TEST DATA
-    const whitelistedAccounts = ["MyUsernamesThis"];
+export const removeViews = (whitelistedAccounts) => {
 
     // Timeline views that are not from twitter circles
     document.querySelectorAll('a').forEach((link) => {
