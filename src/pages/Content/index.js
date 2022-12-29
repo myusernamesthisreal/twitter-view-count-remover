@@ -6,11 +6,17 @@ console.log('Must reload extension for modifications to take effect.');
 
 printLine("Using the 'printLine' function from the Print Module");
 
-removeViews();
+(async () => {
+    const { globalEnable } = await chrome.storage.sync.get(['globalEnable']);
+    const { usernames } = await chrome.storage.sync.get(['usernames']);
+    document.addEventListener('DOMNodeInserted', () => {
+        globalEnable && removeViews(usernames);
+    });
+})();
 
-document.addEventListener('DOMNodeInserted', () => {
-    removeViews();
-});
+
+
+
 
 
 // const s = document.createElement('script');
