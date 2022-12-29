@@ -15,8 +15,13 @@ export const removeViews = () => {
     // Post views when opening a post
     document.querySelectorAll('span').forEach((span) => {
         if (span.textContent?.includes("View") && span.parentElement.tagName === "SPAN") {
-
-            span.parentElement.parentElement.parentElement.parentElement.remove();
+            const shouldBeALink = span.parentElement.parentElement;
+            if (shouldBeALink.tagName === "A") {
+                const wlFilter = whitelistedAccounts.map(account => account.toLowerCase()).includes(shouldBeALink.href.split("/")[3].toLowerCase());
+                if (!wlFilter)
+                    span.parentElement.parentElement.parentElement.parentElement.remove();
+                return;
+            }
         }
     });
 
