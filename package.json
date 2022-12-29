@@ -1,6 +1,6 @@
 {
-  "name": "Twitter View Count Remover",
-  "version": "0.1.0",
+  "name": "twitter-view-count-remover",
+  "version": "0.2.0",
   "description": "A chrome extension to remove the Views count from Twitter",
   "license": "MIT",
   "repository": {
